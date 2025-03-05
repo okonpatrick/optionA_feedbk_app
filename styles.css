@@ -91,6 +91,8 @@ body {
   position: relative;
 }
 
+
+/* Default - No blue border when collapsed */
 .accordion-item::before {
   content: "";
   position: absolute;
@@ -99,6 +101,13 @@ body {
   bottom: 0;
   width: 4px;
   background-color: #007bff;
+
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Show blue border when the accordion is active (open) */
+.accordion-item.active::before {
+  background-color: transparent; /* Initially hidden */
 }
 
 .accordion-header {
@@ -152,7 +161,6 @@ body {
   height: 16px; /* Adjust size as needed */
 }
 
-
 .input-field {
   width: 96%;
   height: 138px;
@@ -183,4 +191,3 @@ body {
 .primary-btn:hover {
   background-color: #0056b3;
 }
-
