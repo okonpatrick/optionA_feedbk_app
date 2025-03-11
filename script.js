@@ -1,180 +1,182 @@
 // script.js
-document.addEventListener("DOMContentLoaded", function () {
-  const accordion = document.querySelector(".accordion");
+document.getElementById("reinstallBtn").addEventListener("click", function () {
+  // In a real implementation, this would trigger the reinstall process
+  alert("Reinstall process would start here");
+  // window.location.href = "chrome://extensions/?id=your_extension_id";
+  // Or use the Chrome Web Store URL for your extension
+});
 
-  // Questions stored in an object
-  const questions = [
-    {
-      id: 1,
-      text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit?",
-    },
-    {
-      id: 2,
-      text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit?",
-    },
-  ];
+function handleReinstall() {
+  // Add your reinstall logic here
+  alert("Redirecting to reinstall process...");
 
-  // Array to store responses
-  const responses = [];
-
-  // Render all questions
-  // Render all questions
-  // Render all questions
-function renderQuestions() {
-  questions.forEach((question, index) => {
-    const accordionItem = document.createElement("div");
-    accordionItem.classList.add("accordion-item");
-
-    // Add vertical blue tick line
-    const blueTickLine = document.createElement("div");
-    blueTickLine.classList.add("blue-tick-line");
-
-    const accordionHeader = document.createElement("div");
-    accordionHeader.classList.add("accordion-header");
-
-    // Add question number
-    const questionNumber = document.createElement("span");
-    questionNumber.classList.add("question-number");
-    questionNumber.textContent = `${index + 1}.`;
-    accordionHeader.appendChild(questionNumber);
-
-    // Add question text (visible when collapsed)
-    const questionText = document.createElement("span");
-    questionText.textContent = question.text;
-    accordionHeader.appendChild(questionText);
-
-    // Add check button
-    const checkButton = document.createElement("button");
-    checkButton.classList.add("check-button");
-
-    // Load SVG from the images folder
-    const svgIcon = document.createElement("img");
-    svgIcon.src = "images/Form_Control_Element.svg"; // Path to your SVG file
-    svgIcon.alt = "Check Icon";
-    svgIcon.style.width = "16px";
-    svgIcon.style.height = "16px";
-
-    checkButton.appendChild(svgIcon);
-
-    checkButton.addEventListener("click", (e) => {
-      e.stopPropagation(); // Prevent accordion from toggling
-      alert(`Question ${index + 1} marked as completed!`);
-    });
-    accordionHeader.appendChild(checkButton);
-
-    const accordionContent = document.createElement("div");
-    accordionContent.classList.add("accordion-content");
-
-    const questionWrapper = document.createElement("div");
-    questionWrapper.classList.add("question-wrapper");
-    questionWrapper.style.display = "flex";
-    questionWrapper.style.justifyContent = "space-between";
-    questionWrapper.style.alignItems = "center";
-    questionWrapper.style.width = "100%";
-
-    // Create a container for the expanded question text and close button
-    const questionCloseContainer = document.createElement("div");
-    questionCloseContainer.style.display = "flex";
-    questionCloseContainer.style.justifyContent = "space-between";
-    questionCloseContainer.style.alignItems = "center";
-    questionCloseContainer.style.width = "100%";
-
-    // Add question text above the input field (visible when expanded)
-    const expandedQuestionText = document.createElement("p");
-    expandedQuestionText.classList.add("expanded-question");
-    expandedQuestionText.textContent = question.text;
-    questionCloseContainer.appendChild(expandedQuestionText);
-
-    // Create close (X) button
-    const closeButton = document.createElement("button");
-    closeButton.classList.add("close-button");
-    closeButton.textContent = "X";
-    closeButton.style.cursor = "pointer";
-    closeButton.style.border = "none";
-    closeButton.style.background = "transparent";
-    closeButton.style.fontSize = "18px";
-    closeButton.style.color = "red";
-    questionCloseContainer.appendChild(closeButton);
-
-    // Append the container to the accordion content
-    accordionContent.appendChild(questionCloseContainer);
-
-    // Create input field
-    const inputField = document.createElement("textarea");
-    inputField.classList.add("input-field");
-    inputField.setAttribute("placeholder", "Enter text here...");
-
-    // Hide input field and close button when "X" is clicked
-    closeButton.addEventListener("click", () => {
-      inputField.style.display = "none";
-      closeButton.style.display = "none";
-      expandedQuestionText.style.display = "none";
-      primaryBtn.style.display = "none";
-    });
-
-    // Append input field
-    accordionContent.appendChild(inputField);
-
-    const primaryBtn = document.createElement("button");
-    primaryBtn.classList.add("primary-btn");
-    primaryBtn.textContent =
-      index === questions.length - 1 ? "Submit Form" : "Submit";
-    primaryBtn.addEventListener("click", () => {
-      const responseText = inputField.value.trim();
-      if (responseText) {
-        // Save the response
-        responses.push({
-          questionId: question.id,
-          response: responseText,
-        });
-
-        console.log("Responses:", responses);
-        accordionItem.classList.remove("active");
-
-        if (index === questions.length - 1) {
-          submitResponses();
-        }
-      } else {
-        alert("Please enter your response before continuing.");
-      }
-    });
-
-    accordionContent.appendChild(primaryBtn);
-    accordionItem.appendChild(accordionHeader);
-    accordionItem.appendChild(accordionContent);
-    accordion.appendChild(accordionItem);
-
-    // Toggle accordion on header click
-    accordionHeader.addEventListener("click", () => {
-      accordionItem.classList.toggle("active");
-      inputField.style.display = "block"; // Show input field when accordion expands
-      closeButton.style.display = "block"; // Show close button when accordion expands
-    });
-  });
+  // Example confirmation dialog
+  const confirmed = confirm("Are you sure you want to reinstall?");
+  if (confirmed) {
+    window.location.href = "/chrome/uninstall";
+  }
 }
 
-  // Submit responses to the endpoint
-  function submitResponses() {
-    const endpoint = "https://your-api-endpoint.com/submit-feedback"; // Replace with your API endpoint
+document.addEventListener("DOMContentLoaded", function () {
+  // Expandable sections based on checkbox state
+  const toggleExpand = (checkboxId, containerId) => {
+    const checkbox = document.getElementById(checkboxId);
+    const container = document.getElementById(containerId);
 
-    fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(responses),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        alert("Feedback submitted successfully!");
-        console.log("Response from server:", data);
-      })
-      .catch((error) => {
-        console.error("Error submitting feedback:", error);
-        alert("An error occurred while submitting feedback.");
+    checkbox.addEventListener("change", function () {
+      container.classList.toggle("hidden", !this.checked);
+    });
+  };
+
+  // Setup toggle for expandable sections
+  toggleExpand("option4", "otherReasonContainer");
+  toggleExpand("option6", "betterAlternativeContainer");
+  toggleExpand("option8", "experienceContainer");
+  toggleExpand("option9", "ratingContainer");
+
+  // Close button functionality
+  document.querySelectorAll(".close-btn").forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const container = this.closest(".feedback-text-container");
+      container.classList.add("hidden");
+
+      // Uncheck the associated checkbox
+      const checkboxes = document.querySelectorAll(".feedback-checkbox");
+      checkboxes.forEach((checkbox) => {
+        if (
+          checkbox.id === "option6" &&
+          container.id === "betterAlternativeContainer"
+        ) {
+          checkbox.checked = false;
+        }
       });
+    });
+  });
+
+  // Star rating functionality
+  let selectedRating = 1;
+
+  const stars = document.querySelectorAll(".star-rating svg");
+
+  stars.forEach((star, index) => {
+    star.addEventListener("click", function () {
+      const rating = index + 1; // Rating from 1-5 based on index
+      selectedRating = rating;
+
+      // Update visual state of stars
+      stars.forEach((s, i) => {
+        // For all stars up to and including the selected one, change fill color
+        if (i <= index) {
+          s.querySelector("path").setAttribute("fill", "#FFD700"); // Gold color for selected
+        } else {
+          s.querySelector("path").setAttribute("fill", "#BCD5E8"); // Default color for unselected
+        }
+      });
+    });
+  });
+
+  document.querySelectorAll(".feedback-checkbox").forEach((checkbox) => {
+    if (checkbox.checked) {
+      let answerData = {
+        option: checkbox.value,
+        checked: true,
+      };
+
+      // Add text input values if applicable
+      if (
+        checkbox.id === "option4" &&
+        document.getElementById("otherReasonText").value
+      ) {
+        answerData.text = document.getElementById("otherReasonText").value;
+      } else if (
+        checkbox.id === "option6" &&
+        document.getElementById("betterAlternativeText").value
+      ) {
+        answerData.text = document.getElementById(
+          "betterAlternativeText"
+        ).value;
+      } else if (
+        checkbox.id === "option8" &&
+        document.getElementById("experienceText").value
+      ) {
+        answerData.text = document.getElementById("experienceText").value;
+      } else if (checkbox.id === "option9") {
+        answerData.rating = selectedRating; // Use the selectedRating variable here
+      }
+
+      feedbackData.answers.push(answerData);
+    }
+  });
+
+  // Form submission
+  // Modified form submission handler
+document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  // 1. Collect base data
+  const customReason = document.getElementById('otherReasonText').value.trim();
+  const rating = selectedRating;
+
+  // 2. Validate rating
+  if (!rating || rating < 1 || rating > 5) {
+      alert('Please provide a rating between 1-5 stars');
+      return;
   }
 
-  // Render all questions
-  renderQuestions();
+  // 3. Create question ID mapping
+  const questionIdMap = {
+      'more_notifications': 'q1',
+      'spend_money': 'q2',
+      'ads_showing': 'q3',
+      'other_reason': 'q4',  // Will be handled separately
+      'not_as_expected': 'q5',
+      'better_alternative': 'q6',
+      'performance_impact': 'q7',
+      'experience_feedback': 'q8',
+      'rate_experience': 'q9'
+  };
+
+  // 4. Build predefinedAnswers array
+  const predefinedAnswers = [];
+  
+  document.querySelectorAll('.feedback-checkbox:checked').forEach(checkbox => {
+      const optionValue = checkbox.value;
+      
+      // Skip special cases handled elsewhere
+      if (optionValue === 'other_reason' || optionValue === 'rate_experience') return;
+
+      predefinedAnswers.push({
+          questionId: questionIdMap[optionValue],
+          question: "How would you rate the user interface?", // Update with actual questions
+          options: ["Poor", "Average", "Excellent"],
+          selectedOption: "Average" // Replace with actual value mapping
+      });
+  });
+
+  // 5. Build final payload
+  const payload = {
+      predefinedAnswers: predefinedAnswers,
+      customReason: customReason,
+      rating: rating
+  };
+
+  // 6. Send to API
+  fetch('https://bs3y2uwgud.execute-api.us-east-1.amazonaws.com/posts', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+  })
+  .then(response => response.json())
+  .then(data => {
+      console.log('Success:', data);
+      alert('Feedback submitted successfully!');
+  })
+  .catch(error => {
+      console.error('Error:', error);
+      alert('Error submitting feedback');
+  });
+});
+  
 });
