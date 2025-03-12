@@ -109,74 +109,89 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Form submission
-  // Modified form submission handler
-document.getElementById('feedbackForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  // 1. Collect base data
-  const customReason = document.getElementById('otherReasonText').value.trim();
-  const rating = selectedRating;
-
-  // 2. Validate rating
-  if (!rating || rating < 1 || rating > 5) {
-      alert('Please provide a rating between 1-5 stars');
-      return;
-  }
-
-  // 3. Create question ID mapping
-  const questionIdMap = {
-      'more_notifications': 'q1',
-      'spend_money': 'q2',
-      'ads_showing': 'q3',
-      'other_reason': 'q4',  // Will be handled separately
-      'not_as_expected': 'q5',
-      'better_alternative': 'q6',
-      'performance_impact': 'q7',
-      'experience_feedback': 'q8',
-      'rate_experience': 'q9'
-  };
-
-  // 4. Build predefinedAnswers array
-  const predefinedAnswers = [];
+ 
+  document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+    e.preventDefault();
   
-  document.querySelectorAll('.feedback-checkbox:checked').forEach(checkbox => {
-      const optionValue = checkbox.value;
-      
-      // Skip special cases handled elsewhere
-      if (optionValue === 'other_reason' || optionValue === 'rate_experience') return;
-
-      predefinedAnswers.push({
-          questionId: questionIdMap[optionValue],
-          question: "How would you rate the user interface?", // Update with actual questions
-          options: ["Poor", "Average", "Excellent"],
-          selectedOption: "Average" // Replace with actual value mapping
-      });
-  });
-
-  // 5. Build final payload
-  const payload = {
-      predefinedAnswers: predefinedAnswers,
-      customReason: customReason,
-      rating: rating
-  };
-
-  // 6. Send to API
-  fetch('https://bs3y2uwgud.execute-api.us-east-1.amazonaws.com/posts', {
+    // Collect all elements
+    const formElements = {
+      option4: document.getElementById('otherReasonText'),
+      option6: document.getElementById('betterAlternativeText'),
+      option8: document.getElementById('experienceText'),
+      option9: document.getElementById('option9')
+    };
+  
+    // Initialize payload structure
+    const payload = {
+      selectedOptions: [],
+      customMessages: {},
+      rating: null
+    };
+  
+    // Process checked checkboxes
+    document.querySelectorAll('.feedback-checkbox:checked').forEach(checkbox => {
+      const label = checkbox.nextElementSibling.textContent.trim();
+      const optionId = checkbox.id;
+  
+      // Handle text input options
+      if (formElements[optionId]) {
+        switch(optionId) {
+          case 'option4':
+          case 'option6':
+          case 'option8':
+            const textValue = formElements[optionId].value.trim();
+            if (textValue) payload.customMessages[label] = textValue;
+            break;
+          case 'option9':
+            payload.rating = selectedRating;
+            break;
+        }
+      }
+      // Handle regular options
+      else {
+        payload.selectedOptions.push(label);
+      }
+    });
+  
+    // Validate rating if option9 is checked
+    if (formElements.option9.checked) {
+      if (!payload.rating || payload.rating < 1 || payload.rating > 5) {
+        alert('Please select a valid star rating');
+        return;
+      }
+    }
+  
+    // Validate at least one feedback option selected
+    if (payload.selectedOptions.length === 0 && Object.keys(payload.customMessages).length === 0 && !payload.rating) {
+      alert('Please select at least one feedback option');
+      return;
+    }
+  
+    // Send to API
+    fetch('https://bs3y2uwgud.execute-api.us-east-1.amazonaws.com/posts', {
       method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
-  })
-  .then(response => response.json())
-  .then(data => {
+    })
+    .then(response => response.json())
+    .then(data => {
       console.log('Success:', data);
       alert('Feedback submitted successfully!');
-  })
-  .catch(error => {
+      // Optional: Reset form
+      this.reset();
+      document.querySelectorAll('.feedback-text-container').forEach(c => c.classList.add('hidden'));
+      selectedRating = 0; // Reset rating
+    })
+    .catch(error => {
       console.error('Error:', error);
       alert('Error submitting feedback');
+    });
   });
-});
+
+
+
+
+
+
   
 });
