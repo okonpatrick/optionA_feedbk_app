@@ -10,9 +10,12 @@
 <body>
    <!-- Navbar -->
    <nav class="navbar">
-    <div class="logo"><span><img src="./images/initial_logo.png" width="62px" height="44px" alt="logo"></span>Feedbk</div>
-    <div class="title">Feedback Research Panel</div>
-  </nav>
+    <div class="left-group">
+        <img src="./images/initial_logo.png" width="62" height="44" alt="logo">
+        <span class="feedbk_text">Feedbk</span>
+    </div>
+    <div class="research_panel">Feedback Research Panel</div>
+</nav>
 
   <div class="feedback-container">
     <h1 class="feedback-title">We'll miss you! We'd really appreciate your feedback before you go.</h1>
@@ -104,7 +107,7 @@
       </div>
 
       <div class="feedback-option">
-          <input type="checkbox" id="option9" class="feedback-checkbox" value="rate_experience">
+          <input type="checkbox" id="option9" class="feedback-checkbox" value="rate_experience" required>
           <label for="option9" class="feedback-label">Rate your experience.</label>
       </div>
 
@@ -144,6 +147,20 @@
 </div>
 </div>
 
+<div id="successModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>🎉 Thank You!</h2>
+    </div>
+    <div class="modal-body">
+      <p>Your feedback has been successfully submitted!</p>
+      <p>Redirecting you to the home page...</p>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-close-btn">Close</button>
+    </div>
+  </div>
+</div>
   <script src="./script.js"></script>
 </body>
 </html>

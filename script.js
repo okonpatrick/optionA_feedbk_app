@@ -2,8 +2,6 @@
 document.getElementById("reinstallBtn").addEventListener("click", function () {
   // In a real implementation, this would trigger the reinstall process
   alert("Reinstall process would start here");
-  // window.location.href = "chrome://extensions/?id=your_extension_id";
-  // Or use the Chrome Web Store URL for your extension
 });
 
 function handleReinstall() {
@@ -54,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Star rating functionality
-  let selectedRating = 1;
+  let selectedRating = 0;
 
   const stars = document.querySelectorAll(".star-rating svg");
 
@@ -176,22 +174,29 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(response => response.json())
     .then(data => {
       console.log('Success:', data);
-      alert('Feedback submitted successfully!');
-      // Optional: Reset form
+
+    // Show modal
+    const modal = document.getElementById('successModal');
+    modal.classList.remove('hidden');
+  
+// Optional: Reset form
       this.reset();
       document.querySelectorAll('.feedback-text-container').forEach(c => c.classList.add('hidden'));
       selectedRating = 0; // Reset rating
+
+      // Redirect after 3 seconds
+  setTimeout(() => {
+    window.location.href = '/';
+  }, 10000);
+  
+  // Close button handler
+  document.querySelector('.modal-close-btn').addEventListener('click', () => {
+    modal.classList.add('hidden');
+  });
     })
     .catch(error => {
       console.error('Error:', error);
       alert('Error submitting feedback');
     });
   });
-
-
-
-
-
-
-  
 });
