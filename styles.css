@@ -19,16 +19,17 @@ body {
   background-color: #ffffff;
   color: #2878b5;
   padding-top: 10px;
-  padding-bottom:10px;
+  padding-bottom: 10px;
   padding-left: 0px;
-  margin: 0 ;
+  margin: 0;
 }
 
 .left-group {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-left: 321px; /* Adjusted for responsiveness */
+  margin-left: 321px;
+  /* Adjusted for responsiveness */
   font-family: Inter;
   font-weight: 700;
   font-size: 24px;
@@ -98,7 +99,7 @@ body {
   .feedback-form-container {
     max-width: 100%;
     margin: 20px 0%;
-}
+  }
 
   .logo {
     font-size: 16px;
@@ -116,61 +117,66 @@ body {
     gap: 0px;
     padding: 0px;
     width: 100%;
-}
+  }
 
-.research_panel {
+  .research_panel {
     transform: none;
     font-size: 14px;
     color: #101928;
-}
-.feedbk_text {
-  font-weight: 700;
-  font-size: 14px;
-  position: relative;
-  margin-left: 20px;
-}
+  }
 
-.feedback-container {
-  font-size: 14px;
-  max-width: 100%;
-  background-color: #C1C0C0;
-  padding: 0px;
-}
+  .feedbk_text {
+    font-weight: 700;
+    font-size: 14px;
+    position: relative;
+    margin-left: 20px;
+  }
 
-.feedback-title {
-  font-size: 16px;
-  padding: 0% 0px;
-}
-.feedback-form-container {
-  margin: 20px 0px;
-  width: 100%;
-  padding: 0px;
-}
+  .feedback-container {
+    font-size: 14px;
+    max-width: 100%;
+    background-color: #C1C0C0;
+    padding: 0px;
+  }
 
-.left-group {
-  margin-left: 0px;
-}
-.research_panel {
-  position: absolute;
-  left: 0%;
-}
+  .feedback-title {
+    font-size: 16px;
+    padding: 0% 0px;
+  }
 
-.reinstall-button {
+  .feedback-form-container {
+    margin: 20px 0px;
+    width: 100%;
+    padding: 0px;
+  }
 
-  padding: 4px 10px;
-  margin: 0 0%; /* Adjusted for responsiveness */
-  font-size: 14px;
+  .left-group {
+    margin-left: 0px;
+  }
+
+  .research_panel {
+    position: absolute;
+    left: 0%;
+  }
+
+  .reinstall-button {
+
+    padding: 4px 10px;
+    margin: 0 0%;
+    /* Adjusted for responsiveness */
+    font-size: 14px;
   }
 
   .feedback-textarea {
     padding: 8px 0px;
-    
+
   }
-  
+
   .feedback-text-instruction {
     padding: 14px 0px;
-  
+
   }
+
   .feedback-label {
     font-size: 12px;
   }
@@ -193,7 +199,8 @@ body {
   margin-bottom: 20px;
   max-width: 1440px;
   display: flex;
-  padding: 0% 5%; /* Adjusted for responsiveness */
+  padding: 0% 5%;
+  /* Adjusted for responsiveness */
 }
 
 .reinstall-card {
@@ -201,7 +208,8 @@ body {
   border-radius: 12px;
   border: 1px solid #e0e0e0;
   padding: 5px 6px;
-  margin: 0 5%; /* Adjusted for responsiveness */
+  margin: 0 5%;
+  /* Adjusted for responsiveness */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -224,7 +232,8 @@ body {
   border: none;
   border-radius: 8px;
   padding: 4px 24px;
-  margin: 0 0%; /* Adjusted for responsiveness */
+  margin: 0 0%;
+  /* Adjusted for responsiveness */
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
@@ -248,7 +257,8 @@ body {
   font-weight: 700;
   color: #1a2330;
   margin-bottom: 0px;
-  padding: 0% 5%; /* Adjusted for responsiveness */
+  padding: 0% 5%;
+  /* Adjusted for responsiveness */
 }
 
 .feedback-subtitle {
@@ -256,8 +266,13 @@ body {
   color: #5f6368;
   margin-bottom: 30px;
   margin-top: 10px;
-  padding: 0% 5%; /* Adjusted for responsiveness */
+  padding: 0% 5%;
+  /* Adjusted for responsiveness */
 }
+
+
+
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -275,14 +290,14 @@ body {
     width: 100%;
   }
 
-   .feedback-form-container {
+  .feedback-form-container {
     margin: 20px 0%;
     padding: 0px;
     width: 100%;
   }
-  
+
   .feedback-subtitle {
-    font-size: 14px;
+    font-size: 12px;
     margin-bottom: 10px;
     margin-top: 5px;
     padding: 0% 0px;
@@ -293,15 +308,17 @@ body {
     text-align: center;
     gap: 0px;
     max-width: 100%;
-    margin: 0 0%; /* Adjusted for responsiveness */
+    margin: 0 0%;
+    /* Adjusted for responsiveness */
     justify-content: space-between;
   }
 
   .reinstall-button {
     padding: 4px 10px;
-    margin: 0 0%; /* Adjusted for responsiveness */
+    margin: 0 0%;
+    /* Adjusted for responsiveness */
     font-size: 14px;
-    }
+  }
 
   .reinstall-text {
     font-size: 12px;
@@ -314,17 +331,14 @@ body {
   }
 
   .goodbye-title {
-    font-size: 24px;
-    text-align: left;
-  }
-
-  .feedback-subtitle {
     font-size: 18px;
+    text-align: left;
   }
 
   .left-group {
     margin-left: 0px;
   }
+
   .feedbk_text {
     font-weight: 700;
     font-size: 14px;
@@ -334,56 +348,21 @@ body {
 
   .feedback-textarea {
     padding: 8px 0px;
-    
+
   }
-  
+
   .feedback-text-instruction {
     padding: 14px 0px;
-  
+
   }
+
   .feedback-label {
     font-size: 12px;
   }
-  
+
 }
 
-@media (max-width: 480px) {
-  .reinstall-text {
-    font-size: 20px;
-  }
 
-  .reinstall-card {
-    margin: 0 0%; /* Adjusted for responsiveness */
-    flex-direction: row; 
-  }
-
-  .reinstall-button {
-    max-width: 100%;
-    justify-content: center;
-    color: var(--Shade-White, #fff);
-    text-align: center;
-    font-feature-settings: "cv01" on, "cv03" on, "cv04" on;
-    /* Paragraph/Medium/Semibold */
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 24px; /* 150% */
-  }
-
-  .feedback-form-container {
-    margin: 20px 0px;
-    width: 100%;
-  }
-
-  .left-group {
-    margin-left: 0px;
-  }
-  .research_panel {
-    position: absolute;
-    left: 50%;
-  }
-}
 
 /* styles.css */
 .feedback-container {
@@ -411,7 +390,8 @@ body {
 
 .feedback-form-container {
   max-width: 1440px;
-  margin: 20px 5%; /* Adjusted for responsiveness */
+  margin: 20px 5%;
+  /* Adjusted for responsiveness */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: #333;
@@ -439,7 +419,8 @@ body {
   font-size: 12px;
   font-style: normal;
   font-weight: 300;
-  line-height: 145%; /* 34.8px */
+  line-height: 145%;
+  /* 34.8px */
 }
 
 .feedback-text-container {
@@ -453,7 +434,8 @@ body {
   font-size: 20px;
   font-style: normal;
   font-weight: 300;
-  line-height: 132%; /* 26.4px */
+  line-height: 132%;
+  /* 26.4px */
   letter-spacing: -0.4px;
   width: 90%;
 }
@@ -465,7 +447,8 @@ body {
   font-size: 16px;
   font-style: normal;
   font-weight: 300;
-  line-height: 160%; /* 28.8px */
+  line-height: 160%;
+  /* 28.8px */
   letter-spacing: -.48px;
   padding: 14px 20px;
 }
@@ -490,7 +473,8 @@ body {
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  line-height: 145%; /* 20.3px */
+  line-height: 145%;
+  /* 20.3px */
 }
 
 .close-btn {
@@ -523,12 +507,12 @@ body {
   width: 100%;
   justify-content: space-between;
   color: #000;
-font-feature-settings: 'liga' off, 'clig' off;
-font-family: Inter;
-font-size: 20.285px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
+  font-feature-settings: 'liga' off, 'clig' off;
+  font-family: Inter;
+  font-size: 20.285px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .rating-option {
@@ -568,7 +552,8 @@ line-height: normal;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
-  line-height: 24px; /* 150% */
+  line-height: 24px;
+  /* 150% */
 }
 
 .submit-btn:hover {
@@ -581,6 +566,20 @@ line-height: normal;
   margin-top: 5px;
 }
 
+@media (max-width: 768px) {
+  .privacy-notice {
+    font-size: 12px;
+    margin-top: 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .privacy-notice {
+    font-size: 12px;
+    margin-top: 2px;
+  }
+}
+
 .privacy-link {
   color: #0066cc;
   text-decoration: underline;
@@ -590,12 +589,12 @@ line-height: normal;
   display: none;
 }
 
+
+
+
+
 /* Responsive Adjustments */
 @media (max-width: 480px) {
-  .feedback-form-container {
-    padding: 0 10px;
-  }
-
   .star {
     width: 32px;
     height: 32px;
@@ -603,22 +602,65 @@ line-height: normal;
 
   .feedback-textarea {
     padding: 8px 0px;
-    
+
   }
-  
+
   .feedback-text-instruction {
     padding: 14px 0px;
-  
+
   }
+
   .feedback-label {
     font-size: 12px;
   }
+
+  .reinstall-text {
+    font-size: 16px;
+  }
+
+  .reinstall-card {
+    margin: 0 0%;
+    /* Adjusted for responsiveness */
+    flex-direction: row;
+  }
+
+  .reinstall-button {
+    max-width: 100%;
+    justify-content: center;
+    color: var(--Shade-White, #fff);
+    text-align: center;
+    font-feature-settings: "cv01" on, "cv03" on, "cv04" on;
+    /* Paragraph/Medium/Semibold */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    /* 150% */
+  }
+
+  .feedback-form-container {
+    margin: 20px 0px;
+    width: 100%;
+  }
+
+  .left-group {
+    margin-left: 0px;
+  }
+
+  .research_panel {
+    position: absolute;
+    left: 50%;
+  }
 }
+
+
+
+
 
 .feedbackForm {
   margin: 0 auto;
 }
-
 
 /* Modal Styles */
 .modal {
