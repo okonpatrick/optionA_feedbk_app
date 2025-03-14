@@ -38,7 +38,6 @@ body {
   color: #101928;
 }
 
-
 .research_panel {
   position: absolute;
   left: 50%;
@@ -48,8 +47,6 @@ body {
   color: #101928;
   white-space: nowrap;
   font-weight: bold;
-  -webkit-text-stroke-width: 0.42px;
-  -webkit-text-stroke-color: #101928;
   font-style: normal;
   font-weight: 600;
 }
@@ -506,7 +503,6 @@ body {
   display: flex;
   padding: 10px 0;
   justify-content: space-between;
-
 }
 
 .rating-label {
