@@ -180,6 +180,11 @@ body {
   .feedback-label {
     font-size: 14px;
   }
+  .reinstall-text {
+    padding: 0 0px;
+    font-size: 12px;
+    text-align: left; 
+  }
 
 }
 
@@ -317,12 +322,13 @@ body {
     padding: 4px 10px;
     margin: 0 0%;
     /* Adjusted for responsiveness */
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .reinstall-text {
     font-size: 12px;
     padding: 0 0px;
+    text-align: left;
   }
 
   .feedback-title {
@@ -331,7 +337,7 @@ body {
   }
 
   .goodbye-title {
-    font-size: 18px;
+    font-size: 16px;
     text-align: left;
     padding: 0% 0px;
   }
@@ -633,7 +639,7 @@ body {
     font-feature-settings: "cv01" on, "cv03" on, "cv04" on;
     /* Paragraph/Medium/Semibold */
     font-family: Inter;
-    font-size: 16px;
+    font-size: 12px;
     font-style: normal;
     font-weight: 600;
     line-height: 24px;
